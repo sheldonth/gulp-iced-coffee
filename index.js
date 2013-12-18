@@ -1,5 +1,5 @@
 var through = require('through2');
-var coffee = require('coffee-script');
+var iced = require('iced-coffee-script');
 var gutil = require('gulp-util');
 var applySourceMap = require('vinyl-sourcemaps-apply');
 var path = require('path');
@@ -12,9 +12,9 @@ module.exports = function (opt) {
     path = path.replace(/\.coffee\.md$/, '.litcoffee');
     return gutil.replaceExtension(path, '.js');
   }
-  
+
   function transform(file, enc, cb) {
-    if (file.isNull()) return cb(null, file); 
+    if (file.isNull()) return cb(null, file);
     if (file.isStream()) return cb(new PluginError('gulp-coffee', 'Streaming not supported'));
 
     var data;
@@ -33,7 +33,7 @@ module.exports = function (opt) {
     }, opt);
 
     try {
-      data = coffee.compile(str, options);
+      data = iced.compile(str, options);
     } catch (err) {
       return cb(new PluginError('gulp-coffee', err));
     }

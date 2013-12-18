@@ -4,11 +4,11 @@
 
 <table>
 <tr> 
-<td>Package</td><td>gulp-coffee</td>
+<td>Package</td><td>gulp-iced-coffee</td>
 </tr>
 <tr>
 <td>Description</td>
-<td>Compiles CoffeeScript</td>
+<td>Compiles IcedCoffeeScript</td>
 </tr>
 <tr>
 <td>Node Version</td>
@@ -19,11 +19,11 @@
 ## Usage
 
 ```javascript
-var coffee = require('gulp-coffee');
+var coffee = require('gulp-iced-coffee');
 
-gulp.task('coffee', function() {
-  gulp.src('./src/*.coffee')
-    .pipe(coffee({bare: true}).on('error', gutil.log))
+gulp.task('iced', function() {
+  gulp.src('./src/*.iced')
+    .pipe(coffee({bare: true})).on('error', gutil.log))
     .pipe(gulp.dest('./public/'))
 });
 ```
