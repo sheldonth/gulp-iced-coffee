@@ -15,7 +15,7 @@ module.exports = function (opt) {
 
   function transform(file, enc, cb) {
     if (file.isNull()) return cb(null, file);
-    if (file.isStream()) return cb(new PluginError('gulp-coffee', 'Streaming not supported'));
+    if (file.isStream()) return cb(new PluginError('gulp-iced-coffee', 'Streaming not supported'));
 
     var data;
     var str = file.contents.toString('utf8');
@@ -35,7 +35,7 @@ module.exports = function (opt) {
     try {
       data = iced.compile(str, options);
     } catch (err) {
-      return cb(new PluginError('gulp-coffee', err));
+      return cb(new PluginError('gulp-iced-coffee', err));
     }
 
     if (data && data.v3SourceMap && file.sourceMap) {

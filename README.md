@@ -30,12 +30,12 @@ gulp.task('iced', function() {
 
 ### Error handling
 
-gulp-coffee will emit an error for cases such as invalid coffeescript syntax. If uncaught, the error will crash gulp.
+gulp-iced-coffee will emit an error for cases such as invalid iced coffeescript syntax. If uncaught, the error will crash gulp.
 
-You will need to attach a listener (i.e. `.on('error')`) for the error event emitted by gulp-coffee:
+You will need to attach a listener (i.e. `.on('error')`) for the error event emitted by gulp-iced-coffee:
 
 ```javascript
-var coffeeStream = coffee({bare: true});
+var coffeeStream = iced({bare: true});
 
 // Attach listener
 coffeeStream.on('error', function(err) {});
@@ -48,7 +48,7 @@ var gutil = require('gulp-util');
 
 // ...
 
-var coffeeStream = coffee({bare: true});
+var coffeeStream = iced({bare: true});
 
 // Attach listener
 coffeeStream.on('error', gutil.log);
@@ -60,7 +60,7 @@ Since `.on(...)` returns `this`, you can make you can compact it as inline code:
 ```javascript
 
 gulp.src('./src/*.coffee')
-  .pipe(coffee({bare: true}).on('error', gutil.log))
+  .pipe(iced({bare: true}).on('error', gutil.log))
   // ...
 ```
 
@@ -70,14 +70,14 @@ The options object supports the same options as the standard CoffeeScript compil
 
 ## Source maps
 
-gulp-coffee can be used in tandem with [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) to generate source maps for the coffee to javascript transition. You will need to initialize [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) prior to running the gulp-coffee compiler and write the source maps after.
+gulp-iced-coffee can be used in tandem with [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) to generate source maps for the coffee to javascript transition. You will need to initialize [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) prior to running the gulp-iced-coffee compiler and write the source maps after.
 
 ```javascript
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.src('./src/*.coffee')
   .pipe(sourcemaps.init())
-  .pipe(coffee())
+  .pipe(iced())
   .pipe(sourcemaps.write())
   .pipe(gulp.dest('./dest/js'));
 
@@ -91,7 +91,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 gulp.src('./src/*.coffee')
   .pipe(sourcemaps.init())
-  .pipe(coffee({ bare: true })).on('error', gutil.log)
+  .pipe(iced({ bare: true })).on('error', gutil.log)
   .pipe(sourcemaps.write('./maps'))
   .pipe(gulp.dest('./dest/js'));
 
