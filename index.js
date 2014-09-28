@@ -10,6 +10,7 @@ var PluginError = gutil.PluginError;
 module.exports = function (opt) {
   function replaceExtension(path) {
     path = path.replace(/\.coffee\.md$/, '.litcoffee');
+    path = path.replace(/\.iced\.md$/, '.liticed');
     return gutil.replaceExtension(path, '.js');
   }
 
@@ -26,17 +27,19 @@ module.exports = function (opt) {
       header: false,
       sourceMap: !!file.sourceMap,
       sourceRoot: false,
-      literate: /\.(litcoffee|coffee\.md)$/.test(file.path),
+      literate: /\.(litcoffee|coffee\.md|liticed|iced\.md)$/.test(file.path),
       filename: file.path,
       sourceFiles: [file.relative],
       generatedFile: replaceExtension(file.relative)
     }, opt);
 
     try {
+      console.log(str);
       data = iced.compile(str, options);
     } catch (err) {
       return cb(new PluginError('gulp-iced-coffee', err));
     }
+    console.log(data);
 
     if (data && data.v3SourceMap && file.sourceMap) {
       applySourceMap(file, data.v3SourceMap);
