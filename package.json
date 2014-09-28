@@ -5,6 +5,10 @@
   "homepage": "http://github.com/ccheever/gulp-iced-coffee",
   "repository": "git://github.com/ccheever/gulp-iced-coffee.git",
   "author": "Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
+  "contributors": [
+    "Charlie Cheever <ccheever@gmail.com>",
+    "Charles Phillips <charles@doublerebel.com>"
+  ],
   "main": "./index.js",
   "keywords": [
     "gulpplugin"
