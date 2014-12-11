@@ -14,7 +14,7 @@
     "gulpplugin"
   ],
   "dependencies": {
-    "iced-coffee-script": "~1.7.0",
+    "iced-coffee-script": "1.8.0-c",
     "through2": "^0.6.1",
     "gulp-util": "^3.0.0",
     "merge": "^1.1.3",
